@@ -379,7 +379,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86b8bed3dcf847439aea5c7425ea610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::splash_guardians.PlayerScript
-  MoveSpeed: 5
+  MaxSpeed: 5
+  Acceleration: 9
+  Direction: {x: 0, y: 0}
   TouchingTile: 0
   TileChecker: {fileID: 970128825}
   TileMask:
