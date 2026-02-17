@@ -46,14 +46,13 @@ namespace splash_guardians
             // Chekcs whether we are touching a tile -- Currently unused
             TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
 
+            // Guys this took WAY too much experimentation please appreciate how the movement feels :)
             if (Direction.magnitude != 0) 
             {
                 float boost = 1 + Vector2.Angle(Direction, RigidBody.linearVelocity)/180f;
-                Debug.Log(boost);
                 RigidBody.linearVelocity += Acceleration * boost * Time.deltaTime * Direction;  
             }
             RigidBody.linearVelocity -= (Acceleration / MaxSpeed) * Time.deltaTime * RigidBody.linearVelocity;
-            Debug.Log(RigidBody.linearVelocity.magnitude);
         }
     }
 }
