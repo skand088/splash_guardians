@@ -15,7 +15,7 @@ namespace splash_guardians
         public float Acceleration;
         public Vector2 Direction; // 2D Vector where x and y are between -1 and 1 as floats.
         protected PlayerControls Controls;
-
+        public int AlgaeScore = 0; //initial score counter for the algae collection minigame
         // CollisionCheckerFields
         Rigidbody2D RigidBody;
         public bool TouchingTile;
@@ -33,6 +33,18 @@ namespace splash_guardians
 
             Direction.x = 0;
             Direction.y = 0;
+        }
+
+        //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
+        private void OnTriggerEnter2D(Collider2D algae_object)
+        {
+            //check if it an algae object
+            if (algae_object.CompareTag("Algae"))
+            {
+                AlgaeScore++; //increase score
+                Destroy(algae_object.gameObject); //delete algae object
+                Debug.Log("Score: " + AlgaeScore); //show in console for now 
+            }
         }
 
         private void OnMove(InputValue input)
