@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 
+using TMPro;
+
 namespace splash_guardians
 {
     public class PlayerScript : MonoBehaviour
@@ -21,7 +23,9 @@ namespace splash_guardians
         public bool TouchingTile;
         public Transform TileChecker;
         public LayerMask TileMask;
-        
+        //for score display
+        public TMP_Text ScoreText;
+
         // player's radius
         public float Radius;
 
@@ -44,6 +48,7 @@ namespace splash_guardians
                 AlgaeScore++; //increase score
                 Destroy(algae_object.gameObject); //delete algae object
                 Debug.Log("Score: " + AlgaeScore); //show in console for now 
+                ScoreText.text = "Score: " + AlgaeScore; // for score display
             }
         }
 
