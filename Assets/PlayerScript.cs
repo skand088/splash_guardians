@@ -44,7 +44,7 @@ namespace splash_guardians
         void Update()
         {
             // Chekcs whether we are touching a tile -- Currently unused
-            TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
+            //TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
 
             // Guys this took WAY too much experimentation please appreciate how the movement feels :)
             if (Direction.magnitude != 0) 
