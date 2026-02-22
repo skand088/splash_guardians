@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9113249714527159505}
   - component: {fileID: 6288365657538439301}
   m_Layer: 0
-  m_Name: trash1
+  m_Name: straw
   m_TagString: Algae
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.058714, y: 3.79802, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1438894169802887903, guid: ca2c8b8f5385f254ca50d0b80db4fdd2, type: 3}
+  m_Sprite: {fileID: -1315573550968275807, guid: a0fb368e8f87025478c8cf7eb365f970, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

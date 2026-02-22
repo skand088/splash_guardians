@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TrashSpawner : MonoBehaviour
 {
-    public GameObject trashTemplate;
+    public GameObject[] trashTemplates;   // Array instead of single prefab
     public float spawnInterval = 3f;
     public float mapWidth = 8f;
     public float mapHeight = 5f;
@@ -12,6 +12,7 @@ public class TrashSpawner : MonoBehaviour
     void Update()
     {
         timer_val += Time.deltaTime;
+
         if (timer_val >= spawnInterval)
         {
             SpawnTrash();
@@ -23,6 +24,11 @@ public class TrashSpawner : MonoBehaviour
     {
         float x_position = Random.Range(-mapWidth, mapWidth);
         float y_position = Random.Range(-mapHeight, mapHeight);
-        Instantiate(trashTemplate, new Vector2(x_position, y_position), Quaternion.identity);
+
+        int randomIndex = Random.Range(0, trashTemplates.Length);
+
+        Instantiate(trashTemplates[randomIndex],
+                    new Vector2(x_position, y_position),
+                    Quaternion.identity);
     }
 }
