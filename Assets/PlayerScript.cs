@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 
+using TMPro;
+
 namespace splash_guardians
 {
     public class PlayerScript : MonoBehaviour
@@ -15,13 +17,15 @@ namespace splash_guardians
         public float Acceleration;
         public Vector2 Direction; // 2D Vector where x and y are between -1 and 1 as floats.
         protected PlayerControls Controls;
-
+        public int AlgaeScore = 0; //initial score counter for the algae collection minigame
         // CollisionCheckerFields
         Rigidbody2D RigidBody;
         public bool TouchingTile;
         public Transform TileChecker;
         public LayerMask TileMask;
-        
+        //for score display
+        public TMP_Text ScoreText;
+
         // player's radius
         public float Radius;
 
@@ -35,6 +39,19 @@ namespace splash_guardians
             Direction.y = 0;
         }
 
+        //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
+        private void OnTriggerEnter2D(Collider2D algae_object)
+        {
+            //check if it an algae object
+            if (algae_object.CompareTag("Algae"))
+            {
+                AlgaeScore++; //increase score
+                Destroy(algae_object.gameObject); //delete algae object
+                Debug.Log("Score: " + AlgaeScore); //show in console for now 
+                ScoreText.text = "Score: " + AlgaeScore; // for score display
+            }
+        }
+
         private void OnMove(InputValue input)
         {
             Direction = input.Get<Vector2>(); // Updated on press or release
@@ -44,7 +61,7 @@ namespace splash_guardians
         void Update()
         {
             // Chekcs whether we are touching a tile -- Currently unused
-            TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
+            //TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
 
             // Guys this took WAY too much experimentation please appreciate how the movement feels :)
             if (Direction.magnitude != 0) 
