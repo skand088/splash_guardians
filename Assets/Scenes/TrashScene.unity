@@ -344,10 +344,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259752382}
-  - component: {fileID: 259752383}
   - component: {fileID: 259752384}
+  - component: {fileID: 259752383}
   m_Layer: 0
-  m_Name: AlgaeGameManager
+  m_Name: TrashGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,13 +377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 259752381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 023ee660de5bf954084fd8c8c72d3a32, type: 3}
+  m_Script: {fileID: 11500000, guid: 70d93c2cc5c23f94e9290afb3b6a5e11, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AlgaeSpawner
-  algaeTemplate: {fileID: 7335392176798004302, guid: 5b717ce25dd88ff468f6e362670c6a80, type: 3}
-  spawnInterval: 1
-  mapWidth: 15
-  mapHeight: 7
+  m_EditorClassIdentifier: Assembly-CSharp::TrashGameTimer
+  gameDuration: 30
+  TimerText: {fileID: 173454596}
 --- !u!114 &259752384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,11 +391,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 259752381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2266a8235b1610448b9f57583ed11da0, type: 3}
+  m_Script: {fileID: 11500000, guid: eb0ae8936ba314b428fdc6d437a33c11, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  gameDuration: 30
-  TimerText: {fileID: 173454596}
+  m_EditorClassIdentifier: Assembly-CSharp::TrashSpawner
+  trashTemplates:
+  - {fileID: 7335392176798004302, guid: 291795afac02cae4ea7bdc6de2f6fba8, type: 3}
+  - {fileID: 7335392176798004302, guid: 1231133381b2d8a4eba22bba8aa00005, type: 3}
+  - {fileID: 7335392176798004302, guid: cf594c5039a834243a960e34ec213e83, type: 3}
+  - {fileID: 7335392176798004302, guid: c6dba7df04dbb0d43b73b028576bb69b, type: 3}
+  spawnInterval: 1
+  mapWidth: 15
+  mapHeight: 7
 --- !u!1 &612059901
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +602,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: e7a1800974193c140bfa83c60495cac4, type: 3}
+  m_Sprite: {fileID: 7121998524142432667, guid: b708ee2165c6aef4e8482a64fc5b74f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -618,7 +622,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -657,7 +661,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 9.25, y: -0.9}
+  m_Offset: {x: 0, y: 0}
   m_Radius: 1
 --- !u!114 &1094631247
 MonoBehaviour:

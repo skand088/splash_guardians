@@ -25,7 +25,6 @@ public class TrashGameTimer : MonoBehaviour
             TimerText.text = "Time: " + Mathf.CeilToInt(trash_game_timer);
         }
     }
-
     void EndGame()
     {
         Debug.Log("Trash game over!");
