@@ -6,7 +6,6 @@ public class AlgaeGameTimer : MonoBehaviour
 {
     public float gameDuration = 30f; //set the game duration
     private float algae_game_timer;
-    public TMP_Text TimerText; //to show the timer
     public Image TimerBarFill;
 
     void Start()
@@ -20,11 +19,9 @@ public class AlgaeGameTimer : MonoBehaviour
         //if the timer has completed, end the game
         if (algae_game_timer <= 0)
         {
-            TimerText.text = "Time: 0"; // set timer back to 0
             TimerBarFill.fillAmount = 0f; // set timer bar to empty
             EndGame();
         } else {
-            TimerText.text = "Time: " + Mathf.CeilToInt(algae_game_timer); //otherwise, display the actual timer value
             TimerBarFill.fillAmount = algae_game_timer / gameDuration; // update the timer bar fill amount
         }
     }
