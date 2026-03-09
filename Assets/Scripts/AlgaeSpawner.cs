@@ -11,7 +11,12 @@ public class AlgaeSpawner : MonoBehaviour
 
     void Update()
     {
+        //do not want to spawn if we are not playing
+        if (AlgaeGameManager.gameInstance == null ||AlgaeGameManager.gameInstance.gameCurrentState != AlgaeGameManager.GameState.Playing)
+            return;
+
         timer_val += Time.deltaTime;
+
         if (timer_val >= spawnInterval)
         {
             SpawnAlgae();

@@ -15,6 +15,10 @@ public class AlgaeGameTimer : MonoBehaviour
 
     void Update()
     {
+        //for start/end screen logic, we do not want to update time if we are not playing
+        if (AlgaeGameManager.gameInstance == null ||AlgaeGameManager.gameInstance.gameCurrentState != AlgaeGameManager.GameState.Playing)
+             return;
+        
         algae_game_timer -= Time.deltaTime;//decrement the timer
         //if the timer has completed, end the game
         if (algae_game_timer <= 0)
@@ -28,9 +32,8 @@ public class AlgaeGameTimer : MonoBehaviour
 
     void EndGame()
     {
-        //display a message in the console
+        //call the endgame screen from the game manager
         Debug.Log("Game over!");
-        //keep as 0f for now to end the game, change to 1f for game over screen later
-        Time.timeScale = 0f;
+        AlgaeGameManager.gameInstance.EndGame();
     }
 }
