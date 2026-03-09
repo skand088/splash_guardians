@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 259752382}
   - component: {fileID: 259752383}
   - component: {fileID: 259752384}
+  - component: {fileID: 259752385}
   m_Layer: 0
   m_Name: AlgaeGameManager
   m_TagString: Untagged
@@ -381,9 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlgaeSpawner
   algaeTemplate: {fileID: 7335392176798004302, guid: 5b717ce25dd88ff468f6e362670c6a80, type: 3}
-  spawnInterval: 1
-  mapWidth: 15
-  mapHeight: 7
+  spawnInterval: 0.8
+  mapWidth: 25
+  mapHeight: 12
 --- !u!114 &259752384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +399,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
   gameDuration: 30
   TimerText: {fileID: 173454596}
+--- !u!114 &259752385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259752381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd0c75020223684d9fd38cee043311d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlgaeBoundarySetup
 --- !u!1 &612059901
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +633,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1206348101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1094631246
@@ -842,12 +856,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206348097}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3200219, y: -1.7218001, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1094631245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1384960745
 GameObject:
@@ -996,6 +1010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552103547}
   - component: {fileID: 1552103546}
+  - component: {fileID: 1552103548}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1072,18 +1087,29 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8853, y: 2.6786, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552103548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552103545}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd0c75020223684d9fd38cee043311d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AlgaeBoundarySetup
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1552103547}
   - {fileID: 1094631245}
-  - {fileID: 1206348101}
   - {fileID: 259752382}
   - {fileID: 12011975}
   - {fileID: 612059905}
