@@ -34,8 +34,8 @@ public class LoginUI : MonoBehaviour
                 PasswordField.text
             );
             StatusText.text = $"Welcome, {session.User?.Email}!";
-            // uncomment for next game scene:
-            // SceneManager.LoadScene("GameScene"); - prolly main menu or mini game 1?
+            await Task.Delay(1000);
+            SceneManager.LoadScene("TrashScene");
         }
         catch (Exception e)
         {

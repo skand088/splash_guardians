@@ -398,6 +398,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
   gameDuration: 30
   TimerText: {fileID: 173454596}
+  ProgressService: {fileID: 0}
+  LevelKey: algae
+  PlayerScoreSource: {fileID: 1094631248}
+  DefaultScore: 0
 --- !u!1 &612059901
 GameObject:
   m_ObjectHideFlags: 0
