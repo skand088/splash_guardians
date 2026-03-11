@@ -382,6 +382,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrashGameTimer
   gameDuration: 30
   TimerText: {fileID: 173454596}
+  ProgressService: {fileID: 0}
+  LevelKey: trash
+  PlayerScoreSource: {fileID: 1094631248}
+  DefaultScore: 0
 --- !u!114 &259752384
 MonoBehaviour:
   m_ObjectHideFlags: 0

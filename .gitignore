@@ -97,3 +97,11 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# Environment and secrets
+.env
+.env.local
+.env*.local
+/[Aa]ssets/Resources/AppConfig.json
+/[Aa]ssets/Resources/AppConfig.json.meta
+

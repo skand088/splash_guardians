@@ -8,3 +8,11 @@
 
 as you develop pls make branches off of main and make sure your branches are up to date!!
 
+## database
+
+you will need a local database to test and run the app
+
+1. in `Assets\Resources` you will find an `AppConfig` example. make a copy.
+2. ask moi for the urls. 
+
+    note: if you get a postgres error, the db is probably paused. ask me to unpause it. S
