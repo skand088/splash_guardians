@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
 
 using TMPro;
+using UnityEngine.Rendering.Universal.Internal;
+using System.Collections.Generic;
 
 namespace splash_guardians
 {
@@ -26,6 +28,15 @@ namespace splash_guardians
         //for score display
         public TMP_Text ScoreText;
 
+        // Animations and flip
+        public SpriteRenderer Sprite;
+        public CircleCollider2D HeldItem;
+        public Vector2 PosHeldItemOffset; 
+        public Vector2 NegHeldItemOffset;
+
+        // Colliders
+        public BoxCollider2D[] DiverColliders;
+
         // player's radius
         public float Radius;
 
@@ -34,6 +45,13 @@ namespace splash_guardians
         {
             Controls = new PlayerControls();
             RigidBody = GetComponent<Rigidbody2D>();
+            Sprite = GetComponent<SpriteRenderer>();
+            HeldItem = GetComponent<CircleCollider2D>();
+            DiverColliders = GetComponents<BoxCollider2D>();
+
+            PosHeldItemOffset = HeldItem.offset;
+            NegHeldItemOffset = HeldItem.offset;
+            NegHeldItemOffset.x = -NegHeldItemOffset.x;
 
             Direction.x = 0;
             Direction.y = 0;
@@ -55,15 +73,41 @@ namespace splash_guardians
         private void OnMove(InputValue input)
         {
             Direction = input.Get<Vector2>(); // Updated on press or release
+            HandleSprite();
         }
 
         // Updated EVERY FRAME. 
         void Update()
         {
-            // Chekcs whether we are touching a tile -- Currently unused
-            //TouchingTile = Physics2D.OverlapCircle(TileChecker.position, Radius, TileMask);
+            HandleMovement();
+        }
 
-            // Guys this took WAY too much experimentation please appreciate how the movement feels :)
+        private void HandleSprite()
+        {
+            if (Direction.x < 0f)
+            {
+                Sprite.flipX = true;
+                HeldItem.offset = NegHeldItemOffset;
+                foreach (BoxCollider2D box in DiverColliders)
+                {
+                    box.offset.Set(-Math.Abs(box.offset.x), box.offset.y);
+                    Debug.Log(box.offset);
+                }
+            }
+            else if (Direction.x > 0f)
+            {
+                Sprite.flipX = false;
+                HeldItem.offset = PosHeldItemOffset;
+                foreach (BoxCollider2D box in DiverColliders)
+                {
+                    box.offset.Set(Math.Abs(box.offset.x), box.offset.y);
+                    Debug.Log(box.offset);
+                }
+            }
+        }
+
+        private void HandleMovement()
+        {
             if (Direction.magnitude != 0) 
             {
                 float boost = 1 + Vector2.Angle(Direction, RigidBody.linearVelocity)/180f;
