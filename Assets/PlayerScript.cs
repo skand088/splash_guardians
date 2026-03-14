@@ -88,21 +88,11 @@ namespace splash_guardians
             {
                 Sprite.flipX = true;
                 HeldItem.offset = NegHeldItemOffset;
-                foreach (BoxCollider2D box in DiverColliders)
-                {
-                    box.offset.Set(-Math.Abs(box.offset.x), box.offset.y);
-                    Debug.Log(box.offset);
-                }
             }
             else if (Direction.x > 0f)
             {
                 Sprite.flipX = false;
                 HeldItem.offset = PosHeldItemOffset;
-                foreach (BoxCollider2D box in DiverColliders)
-                {
-                    box.offset.Set(Math.Abs(box.offset.x), box.offset.y);
-                    Debug.Log(box.offset);
-                }
             }
         }
 
