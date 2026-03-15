@@ -3,12 +3,13 @@ using TMPro; // for displaying the timer
 using System.Threading.Tasks;
 using splash_guardians;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameTimer : MonoBehaviour
+public class AlgaeGameTimer : MonoBehaviour
 {
     public float gameDuration = 30f; //set the game duration
     private float algae_game_timer;
-    public TMP_Text TimerText; //to show the timer
+    public Image TimerBarFill;
     public ProgressService ProgressService;
     public string LevelKey = "algae";
     public splash_guardians.PlayerScript PlayerScoreSource;
@@ -30,16 +31,18 @@ public class GameTimer : MonoBehaviour
     {
         if (_hasEnded) return;
 
+        //for start/end screen logic, we do not want to update time if we are not playing
+        if (AlgaeGameManager.gameInstance == null ||AlgaeGameManager.gameInstance.gameCurrentState != AlgaeGameManager.GameState.Playing)
+             return;
+        
         algae_game_timer -= Time.deltaTime;//decrement the timer
         //if the timer has completed, end the game
         if (algae_game_timer <= 0)
         {
-            TimerText.text = "Time: 0"; // set timer back to 0
+            TimerBarFill.fillAmount = 0f; // set timer bar to empty
             EndGame();
-        }
-        else
-        {
-            TimerText.text = "Time: " + Mathf.CeilToInt(algae_game_timer); //otherwise, display the actual timer value
+        } else {
+            TimerBarFill.fillAmount = algae_game_timer / gameDuration; // update the timer bar fill amount
         }
     }
 
@@ -54,8 +57,7 @@ public class GameTimer : MonoBehaviour
             await SaveProgressSafely();
         }
 
-        //keep as 0f for now to end the game, change to 1f for game over screen later
-        Time.timeScale = 0f;
+        AlgaeGameManager.gameInstance.EndGame();
     }
 
     private async Task SaveProgressSafely()
