@@ -5,14 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/LoginScene.unity
-    guid: 590c01f2bb4fea54f82627494ce80140
+    path: Assets/Scenes/AnimationTesting.unity
+    guid: 78d71c4823f04944895616839058df00
   - enabled: 1
-    path: Assets/Scenes/TrashScene.unity
-    guid: 970c2b12e9ce5164bb7189c77064831e
-  - enabled: 1
-    path: Assets/Scenes/AlgaeScene.unity
+    path: Assets/Scenes/Movement Example.unity
     guid: ee471c0fa3b996f4fa0b62bdc0f61ac7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
