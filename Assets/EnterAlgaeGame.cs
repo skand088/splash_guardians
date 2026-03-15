@@ -7,7 +7,7 @@ namespace splash_guardians
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 }
