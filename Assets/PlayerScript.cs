@@ -19,7 +19,8 @@ namespace splash_guardians
         public float Acceleration;
         public Vector2 Direction; // 2D Vector where x and y are between -1 and 1 as floats.
         protected PlayerControls Controls;
-        public int AlgaeScore = 0; //initial score counter for the algae collection minigame
+        public int AlgaeScore = 0; // initial score counter for the algae collection minigame
+        public int TrashScore = 0; // new score counter for the trash collection minigame
         // CollisionCheckerFields
         Rigidbody2D RigidBody;
         public bool TouchingTile;
@@ -58,15 +59,23 @@ namespace splash_guardians
         }
 
         //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
-        private void OnTriggerEnter2D(Collider2D algae_object)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            //check if it an algae object
-            if (algae_object.CompareTag("Algae"))
+            if (other.CompareTag("Algae"))
             {
-                AlgaeScore++; //increase score
-                Destroy(algae_object.gameObject); //delete algae object
-                Debug.Log("Score: " + AlgaeScore); //show in console for now 
-                ScoreText.text = "Score: " + AlgaeScore; // for score display
+                AlgaeScore++; // increase algae score
+                Destroy(other.gameObject);
+                Debug.Log("Algae Score: " + AlgaeScore);
+                if (ScoreText != null) ScoreText.text = "Algae Score: " + AlgaeScore;
+                return;
+            }
+
+            if (other.CompareTag("Trash"))
+            {
+                TrashScore++; // increase trash score
+                Destroy(other.gameObject);
+                Debug.Log("Trash Score: " + TrashScore);
+                if (ScoreText != null) ScoreText.text = "Trash Score: " + TrashScore;
             }
         }
 
