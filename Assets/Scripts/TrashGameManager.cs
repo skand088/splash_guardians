@@ -37,7 +37,6 @@ public class TrashGameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("TrashGameManager.StartGame called");
         gameCurrentState = GameState.Playing;
         Time.timeScale = 1f;
         gameStartScreen.SetActive(false);

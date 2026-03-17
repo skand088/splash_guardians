@@ -7,10 +7,6 @@ public class TrashGameStartUI : MonoBehaviour
 
     void Start()
     {
-        playButton.onClick.AddListener(() =>
-        {
-            Debug.Log("Trash play button clicked");
-            TrashGameManager.gameInstance.StartGame();
-        });
+        playButton.onClick.AddListener(() => TrashGameManager.gameInstance.StartGame());
     }
 }
