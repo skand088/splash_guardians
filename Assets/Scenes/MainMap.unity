@@ -94243,8 +94243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86b8bed3dcf847439aea5c7425ea610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::splash_guardians.PlayerScript
-  MaxSpeed: 20
-  Acceleration: 35
+  MaxSpeed: 12.5
+  Acceleration: 30
   Direction: {x: 0, y: 0}
   AlgaeScore: 0
   TouchingTile: 0
