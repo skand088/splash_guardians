@@ -61,7 +61,7 @@ public class AlgaeGameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("AnimationTesting");
+        SceneManager.LoadScene("MainMap");
     }
 
 }

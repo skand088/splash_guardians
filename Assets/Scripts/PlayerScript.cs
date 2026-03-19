@@ -61,7 +61,7 @@ namespace splash_guardians
         private void OnTriggerEnter2D(Collider2D algae_object)
         {
             //check if it an algae object
-            if (algae_object.CompareTag("Algae"))
+            if (algae_object.CompareTag("Algae") && HeldItem.IsTouching(algae_object))
             {
                 AlgaeScore++; //increase score
                 Destroy(algae_object.gameObject); //delete algae object
