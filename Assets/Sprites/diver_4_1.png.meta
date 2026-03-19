@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: e7a1800974193c140bfa83c60495cac4
+guid: 44f683bf6d31d15419e5a7340b1eee88
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2514172262559886572
-    second: diver_with_vaccum_empty (1)_0
+      213: 7966897355087580413
+    second: diver_4_1_0
   - first:
-      213: 9138825522969604721
-    second: diver_with_vaccum_empty (1)_1
+      213: 6345706877809060828
+    second: diver_4_1_1
   - first:
-      213: -470779093182357836
-    second: diver_with_vaccum_empty (1)_2
+      213: -4294392149842534120
+    second: diver_4_1_2
   - first:
-      213: -8842828820881989853
-    second: diver_with_vaccum_empty (1)_3
+      213: -3026384305607737729
+    second: diver_4_1_3
   - first:
-      213: 8372742514245335136
-    second: diver_with_vaccum_empty (1)_4
+      213: -8742461130649413968
+    second: diver_4_1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,11 +58,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.55632365, y: 0.56272405}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: diver_with_vaccum_empty (1)_0
+      name: diver_4_1_0
       rect:
         serializedVersion: 2
-        x: 1167
-        y: 1637
-        width: 65
-        height: 65
+        x: 1433
+        y: 1664
+        width: 71
+        height: 71
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ceca5062a5224e220800000000000000
-      internalID: 2514172262559886572
+      spriteID: dfc8efb1fea109e60800000000000000
+      internalID: 7966897355087580413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: diver_with_vaccum_empty (1)_1
+      name: diver_4_1_1
       rect:
         serializedVersion: 2
-        x: 1230
-        y: 1610
-        width: 22
-        height: 23
+        x: 1502
+        y: 1636
+        width: 23
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17270e0c461a3de70800000000000000
-      internalID: 9138825522969604721
+      spriteID: cdbef8cc8ca701850800000000000000
+      internalID: 6345706877809060828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: diver_with_vaccum_empty (1)_2
+      name: diver_4_1_2
       rect:
         serializedVersion: 2
-        x: 1223
-        y: 1512
-        width: 57
-        height: 58
+        x: 1494
+        y: 1529
+        width: 61
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4be5f27b8e47779f0800000000000000
-      internalID: -470779093182357836
+      spriteID: 811e866a7114764c0800000000000000
+      internalID: -4294392149842534120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: diver_with_vaccum_empty (1)_3
+      name: diver_4_1_3
       rect:
         serializedVersion: 2
-        x: 1273
-        y: 1471
-        width: 31
-        height: 30
+        x: 1548
+        y: 1485
+        width: 33
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,30 +193,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 32f1eb9e906f74580800000000000000
-      internalID: -8842828820881989853
+      spriteID: f7efe6e228f1006d0800000000000000
+      internalID: -3026384305607737729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: diver_with_vaccum_empty (1)_4
+      name: diver_4_1_4
       rect:
         serializedVersion: 2
-        x: 52
-        y: 566
-        width: 1830
-        height: 895
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 228
+        y: 707
+        width: 1506
+        height: 767
+      alignment: 9
+      pivot: {x: 0.67509764, y: 0.466621}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 068776db4f4f13470800000000000000
-      internalID: 8372742514245335136
+      spriteID: 0b65bf4dbe98ca680800000000000000
+      internalID: -8742461130649413968
       vertices: []
       indices: 
       edges: []
@@ -225,8 +225,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 6042ba00159627648b618ac13114f2fa
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -235,11 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      diver_with_vaccum_empty (1)_0: 2514172262559886572
-      diver_with_vaccum_empty (1)_1: 9138825522969604721
-      diver_with_vaccum_empty (1)_2: -470779093182357836
-      diver_with_vaccum_empty (1)_3: -8842828820881989853
-      diver_with_vaccum_empty (1)_4: 8372742514245335136
+      diver_4_1_0: 7966897355087580413
+      diver_4_1_1: 6345706877809060828
+      diver_4_1_2: -4294392149842534120
+      diver_4_1_3: -3026384305607737729
+      diver_4_1_4: -8742461130649413968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
