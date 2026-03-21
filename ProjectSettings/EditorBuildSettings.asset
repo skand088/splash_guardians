@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/AnimationTesting.unity
     guid: 78d71c4823f04944895616839058df00
   - enabled: 1
-    path: Assets/Scenes/Movement Example.unity
+    path: Assets/Scenes/AlgaeScene.unity
     guid: ee471c0fa3b996f4fa0b62bdc0f61ac7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
