@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TrashGameTimer : MonoBehaviour
 {
-    public float gameDuration = 30f; //set the game duration
+    public float gameDuration = 30f; // set the game duration
     private float trash_game_timer;
     public Image TimerBarFill;
     public ProgressService ProgressService;
@@ -21,6 +21,7 @@ public class TrashGameTimer : MonoBehaviour
     {
         Time.timeScale = 1f; // Unfreeze time from previous scene
         trash_game_timer = gameDuration;
+
         if (ProgressService == null)
         {
             ProgressService = FindAnyObjectByType<ProgressService>();
@@ -31,25 +32,27 @@ public class TrashGameTimer : MonoBehaviour
     {
         if (_hasEnded) return;
 
-        //for start/end screen logic, we do not want to update time if we are not playing
-        if (TrashGameManager.gameInstance == null ||TrashGameManager.gameInstance.gameCurrentState != TrashGameManager.GameState.Playing)
-             return;
-        
-        trash_game_timer -= Time.deltaTime;//decrement the timer
-        //if the timer has completed, end the game
+        // Only update timer if game is actively playing
+        if (TrashGameManager.gameInstance == null ||
+            TrashGameManager.gameInstance.gameCurrentState != TrashGameManager.GameState.Playing)
+            return;
+
+        trash_game_timer -= Time.deltaTime;
+
         if (trash_game_timer <= 0)
         {
-            TimerBarFill.fillAmount = 0f; // set timer bar to empty
+            TimerBarFill.fillAmount = 0f;
             EndGame();
-        } else {
-            TimerBarFill.fillAmount = trash_game_timer / gameDuration; // update the timer bar fill amount
+        }
+        else
+        {
+            TimerBarFill.fillAmount = trash_game_timer / gameDuration;
         }
     }
 
     async void EndGame()
     {
         _hasEnded = true;
-        //display a message in the console
         Debug.Log("Game over!");
 
         if (ProgressService != null)
@@ -64,9 +67,15 @@ public class TrashGameTimer : MonoBehaviour
     {
         try
         {
-            var finalScore = PlayerScoreSource != null ? PlayerScoreSource.TrashScore : DefaultScore;
+            // ✅ FIXED HERE: using AlgaeScore instead of TrashScore
+            var finalScore = PlayerScoreSource != null 
+                ? PlayerScoreSource.AlgaeScore 
+                : DefaultScore;
+
             await ProgressService.SaveLevelResultAsync(LevelKey, finalScore);
+
             Debug.Log($"Saved progress for level '{LevelKey}' with score {finalScore}.");
+
             await Task.Delay(500);
             SceneManager.LoadScene("LoginScene");
         }
