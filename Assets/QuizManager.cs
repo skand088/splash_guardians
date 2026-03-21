@@ -10,6 +10,8 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options; //button
     public int currentQuestion;
 
+    public GameObject StartPanel;
+    public GameObject InfoPanel;
     public GameObject QuizPanel;
     public GameObject GameOverPanel;
 
@@ -23,7 +25,28 @@ public class QuizManager : MonoBehaviour
     private void Start()
     {
         TotalQuestions = Mathf.Min(5, QnA.Count);
+        
+        StartPanel.SetActive(true);
+        InfoPanel.SetActive(false);
+        QuizPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+    }
+
+    public void ShowInfo()
+    {
+        InfoPanel.SetActive(true);
+    }
+
+    public void HideInfo()
+    {
+        InfoPanel.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        StartPanel.SetActive(false);
+        InfoPanel.SetActive(false);
+        QuizPanel.SetActive(true);
         generateQuestion();
     }
 
