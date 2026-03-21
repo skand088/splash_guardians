@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -857,7 +857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1192215528
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1220,6 +1220,41 @@ MonoBehaviour:
     - C. Improves water clarity
     - D. Reduces coral reef diversity naturally
     CorrectAnswer: 2
+  - Question: What is a major source of oil pollution in oceans?
+    Answers:
+    - A. Underwater volcanoes
+    - B. Oil spills from ships and drilling operations
+    - C. Coral reef erosion
+    - D. Fish Waste
+    CorrectAnswer: 2
+  - Question: What happens when plastic enters the ocean?
+    Answers:
+    - A. It dissolves quickly in saltwater
+    - B. It becomes harmless over time
+    - C. It can break into microplastics and harm marine life
+    - D. It sinks and disappears permanently
+    CorrectAnswer: 3
+  - Question: 'Coral reefs are important because they:'
+    Answers:
+    - A. Increase ocean salinity
+    - B. Provide habitat and shelter for many species
+    - C. Reduce ocean currents
+    - D. Prevent rainfall
+    CorrectAnswer: 2
+  - Question: What is one consequence of ocean acidification?
+    Answers:
+    - A. Stronger coral structures
+    - B. Increased fish reproduction
+    - C. Damage to shells and coral skeletons
+    - D. Reduced carbon dioxide levels
+    CorrectAnswer: 3
+  - Question: Which human activity contributes most to marine pollution?
+    Answers:
+    - A. Space exploration
+    - B. Agricultural runoff and industrial waste
+    - C. Natural ocean currents
+    - D. Deep-sea volcanic activity
+    CorrectAnswer: 2
   options:
   - {fileID: 1880320251}
   - {fileID: 2080108004}
@@ -1554,7 +1589,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1718,7 +1753,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.6981132, g: 0.55651474, b: 0.687221, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2039,8 +2074,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
+    m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2087,7 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5882353, g: 0.43529412, b: 0.5764706, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

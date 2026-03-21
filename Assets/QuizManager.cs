@@ -18,10 +18,11 @@ public class QuizManager : MonoBehaviour
 
     int TotalQuestions;
     public int score;
+    int questionsAsked = 0;
 
     private void Start()
     {
-        TotalQuestions = QnA.Count;
+        TotalQuestions = Mathf.Min(5, QnA.Count);
         GameOverPanel.SetActive(false);
         generateQuestion();
     }
@@ -41,12 +42,14 @@ public class QuizManager : MonoBehaviour
     public void correct()
     {
         score += 1;
+        questionsAsked += 1;
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
 
     public void wrong()
     {
+        questionsAsked += 1;
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
@@ -58,7 +61,7 @@ public class QuizManager : MonoBehaviour
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[i];
 
-            if (QnA[currentQuestion].CorrectAnswer == i+1)
+            if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
@@ -67,9 +70,9 @@ public class QuizManager : MonoBehaviour
 
     void generateQuestion()
     {
-        if (QnA.Count > 0)
+        if (questionsAsked < TotalQuestions && QnA.Count > 0)
         {
-             currentQuestion = Random.Range(0, QnA.Count);
+            currentQuestion = Random.Range(0, QnA.Count);
             QuestionText.text = QnA[currentQuestion].Question;
             SetAnswers();
         }
@@ -79,5 +82,4 @@ public class QuizManager : MonoBehaviour
             GameOver();
         }
     }
-
 }
