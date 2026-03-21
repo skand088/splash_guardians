@@ -59,18 +59,10 @@ namespace splash_guardians
         }
 
         //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D algae_object)
         {
-            if (other.CompareTag("Algae"))
-            {
-                AlgaeScore++; // increase algae score
-                Destroy(other.gameObject);
-                Debug.Log("Algae Score: " + AlgaeScore);
-                if (ScoreText != null) ScoreText.text = "Algae Score: " + AlgaeScore;
-                return;
-            }
-
-            if (other.CompareTag("Trash"))
+            //check if it an algae object
+            if (algae_object.CompareTag("Algae") && HeldItem.IsTouching(algae_object))
             {
                 TrashScore++; // increase trash score
                 Destroy(other.gameObject);

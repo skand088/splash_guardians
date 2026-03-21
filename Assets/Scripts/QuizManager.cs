@@ -10,6 +10,8 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options; //button
     public int currentQuestion;
 
+    public GameObject StartPanel;
+    public GameObject InfoPanel;
     public GameObject QuizPanel;
     public GameObject GameOverPanel;
 
@@ -18,11 +20,33 @@ public class QuizManager : MonoBehaviour
 
     int TotalQuestions;
     public int score;
+    int questionsAsked = 0;
 
     private void Start()
     {
-        TotalQuestions = QnA.Count;
+        TotalQuestions = Mathf.Min(5, QnA.Count);
+        
+        StartPanel.SetActive(true);
+        InfoPanel.SetActive(false);
+        QuizPanel.SetActive(false);
         GameOverPanel.SetActive(false);
+    }
+
+    public void ShowInfo()
+    {
+        InfoPanel.SetActive(true);
+    }
+
+    public void HideInfo()
+    {
+        InfoPanel.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        StartPanel.SetActive(false);
+        InfoPanel.SetActive(false);
+        QuizPanel.SetActive(true);
         generateQuestion();
     }
 
@@ -41,12 +65,14 @@ public class QuizManager : MonoBehaviour
     public void correct()
     {
         score += 1;
+        questionsAsked += 1;
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
 
     public void wrong()
     {
+        questionsAsked += 1;
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
@@ -58,7 +84,7 @@ public class QuizManager : MonoBehaviour
             options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[i];
 
-            if (QnA[currentQuestion].CorrectAnswer == i+1)
+            if (QnA[currentQuestion].CorrectAnswer == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
             }
@@ -67,9 +93,9 @@ public class QuizManager : MonoBehaviour
 
     void generateQuestion()
     {
-        if (QnA.Count > 0)
+        if (questionsAsked < TotalQuestions && QnA.Count > 0)
         {
-             currentQuestion = Random.Range(0, QnA.Count);
+            currentQuestion = Random.Range(0, QnA.Count);
             QuestionText.text = QnA[currentQuestion].Question;
             SetAnswers();
         }
@@ -79,5 +105,4 @@ public class QuizManager : MonoBehaviour
             GameOver();
         }
     }
-
 }
