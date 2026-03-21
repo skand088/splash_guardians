@@ -1,14 +1,15 @@
 using UnityEngine;
-using TMPro;
+using TMPro; // for displaying the timer
 using System.Threading.Tasks;
 using splash_guardians;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TrashGameTimer : MonoBehaviour
 {
-    public float gameDuration = 30f; // game duration in seconds
+    public float gameDuration = 30f; //set the game duration
     private float trash_game_timer;
-    public TMP_Text TimerText; // UI text to show timer
+    public Image TimerBarFill;
     public ProgressService ProgressService;
     public string LevelKey = "trash";
     public splash_guardians.PlayerScript PlayerScoreSource;
@@ -30,40 +31,44 @@ public class TrashGameTimer : MonoBehaviour
     {
         if (_hasEnded) return;
 
-        trash_game_timer -= Time.deltaTime; // decrement the timer
+        //for start/end screen logic, we do not want to update time if we are not playing
+        if (TrashGameManager.gameInstance == null ||TrashGameManager.gameInstance.gameCurrentState != TrashGameManager.GameState.Playing)
+             return;
+        
+        trash_game_timer -= Time.deltaTime;//decrement the timer
+        //if the timer has completed, end the game
         if (trash_game_timer <= 0)
         {
-            TimerText.text = "Time: 0";
+            TimerBarFill.fillAmount = 0f; // set timer bar to empty
             EndGame();
-        }
-        else
-        {
-            TimerText.text = "Time: " + Mathf.CeilToInt(trash_game_timer);
+        } else {
+            TimerBarFill.fillAmount = trash_game_timer / gameDuration; // update the timer bar fill amount
         }
     }
 
     async void EndGame()
     {
         _hasEnded = true;
-        Debug.Log("Trash game over!");
+        //display a message in the console
+        Debug.Log("Game over!");
 
         if (ProgressService != null)
         {
             await SaveProgressSafely();
         }
 
-        Time.timeScale = 0f;
+        TrashGameManager.gameInstance.EndGame();
     }
 
     private async Task SaveProgressSafely()
     {
         try
         {
-            var finalScore = PlayerScoreSource != null ? PlayerScoreSource.AlgaeScore : DefaultScore;
+            var finalScore = PlayerScoreSource != null ? PlayerScoreSource.TrashScore : DefaultScore;
             await ProgressService.SaveLevelResultAsync(LevelKey, finalScore);
             Debug.Log($"Saved progress for level '{LevelKey}' with score {finalScore}.");
             await Task.Delay(500);
-            SceneManager.LoadScene("AlgaeScene");
+            SceneManager.LoadScene("LoginScene");
         }
         catch (System.Exception e)
         {

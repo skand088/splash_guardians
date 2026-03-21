@@ -11,6 +11,10 @@ public class TrashSpawner : MonoBehaviour
 
     void Update()
     {
+        // Only spawn while the game is playing.
+        if (TrashGameManager.gameInstance == null || TrashGameManager.gameInstance.gameCurrentState != TrashGameManager.GameState.Playing)
+            return;
+
         timer_val += Time.deltaTime;
 
         if (timer_val >= spawnInterval)
