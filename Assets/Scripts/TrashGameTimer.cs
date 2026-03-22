@@ -69,7 +69,8 @@ public class TrashGameTimer : MonoBehaviour
             await ProgressService.SaveLevelResultAsync(LevelKey, finalScore);
             Debug.Log($"Saved progress for level '{LevelKey}' with score {finalScore}.");
             await Task.Delay(500);
-            SceneManager.LoadScene("LoginScene");
+            // smth like this add for each timer
+            // SceneManager.LoadScene("MainMap");
         }
         catch (System.Exception e)
         {
