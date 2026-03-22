@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AlgaeGameManager : MonoBehaviour
+public class TrashGameManager : MonoBehaviour
 {
     //create a game instance
-    public static AlgaeGameManager gameInstance;
+    public static TrashGameManager gameInstance;
 
     //define the game state as one of three options
     public enum GameState { Start, Playing, GameOver }

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Algae
+  - AlgaeGame
+  - TrashGame
+  - QuizGame
+  - GamePortalContainer
   layers:
   - Default
   - TransparentFX

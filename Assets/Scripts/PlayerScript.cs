@@ -5,9 +5,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vector2 = UnityEngine.Vector2;
-
 using TMPro;
-using UnityEngine.Rendering.Universal.Internal;
 using System.Collections.Generic;
 
 namespace splash_guardians
@@ -19,7 +17,8 @@ namespace splash_guardians
         public float Acceleration;
         public Vector2 Direction; // 2D Vector where x and y are between -1 and 1 as floats.
         protected PlayerControls Controls;
-        public int AlgaeScore = 0; //initial score counter for the algae collection minigame
+        public int AlgaeScore = 0; // initial score counter for the algae collection minigame
+        public int TrashScore = 0; // new score counter for the trash collection minigame
         // CollisionCheckerFields
         Rigidbody2D RigidBody;
         public bool TouchingTile;
@@ -61,12 +60,12 @@ namespace splash_guardians
         private void OnTriggerEnter2D(Collider2D algae_object)
         {
             //check if it an algae object
-            if (algae_object.CompareTag("Algae"))
+            if (algae_object.CompareTag("Algae") && HeldItem.IsTouching(algae_object))
             {
-                AlgaeScore++; //increase score
-                Destroy(algae_object.gameObject); //delete algae object
-                Debug.Log("Score: " + AlgaeScore); //show in console for now 
-                ScoreText.text = "Score: " + AlgaeScore; // for score display
+                AlgaeScore++; // increase algae score
+                Destroy(algae_object.gameObject);
+                Debug.Log("Algae Score: " + AlgaeScore);
+                if (ScoreText != null) ScoreText.text = "Algae Score: " + AlgaeScore;
             }
         }
 
@@ -107,5 +106,3 @@ namespace splash_guardians
         }
     }
 }
-
- 
