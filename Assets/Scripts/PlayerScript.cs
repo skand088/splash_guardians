@@ -47,10 +47,14 @@ namespace splash_guardians
             Sprite = GetComponent<SpriteRenderer>();
             HeldItem = GetComponent<CircleCollider2D>();
             DiverColliders = GetComponents<BoxCollider2D>();
+            ScoreText = GetComponent<TMP_Text>();
 
-            PosHeldItemOffset = HeldItem.offset;
-            NegHeldItemOffset = HeldItem.offset;
-            NegHeldItemOffset.x = -NegHeldItemOffset.x;
+            if (HeldItem != null)
+            {
+                PosHeldItemOffset = HeldItem.offset;
+                NegHeldItemOffset = HeldItem.offset;
+                NegHeldItemOffset.x = -NegHeldItemOffset.x;
+            }
 
             Direction.x = 0;
             Direction.y = 0;
@@ -59,6 +63,11 @@ namespace splash_guardians
         //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
         private void OnTriggerEnter2D(Collider2D algae_object)
         {
+            // Prevent some errors while in main map.
+            if (HeldItem == null)
+            {
+                return;
+            }
             //check if it an algae object
             if (algae_object.CompareTag("Algae") && HeldItem.IsTouching(algae_object))
             {
@@ -86,12 +95,12 @@ namespace splash_guardians
             if (Direction.x < 0f)
             {
                 Sprite.flipX = true;
-                HeldItem.offset = NegHeldItemOffset;
+                if (HeldItem != null) HeldItem.offset = NegHeldItemOffset;
             }
             else if (Direction.x > 0f)
             {
                 Sprite.flipX = false;
-                HeldItem.offset = PosHeldItemOffset;
+                if (HeldItem != null) HeldItem.offset = PosHeldItemOffset;
             }
         }
 

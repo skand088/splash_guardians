@@ -94247,6 +94247,7 @@ MonoBehaviour:
   Acceleration: 30
   Direction: {x: 0, y: 0}
   AlgaeScore: 0
+  TrashScore: 0
   TouchingTile: 0
   TileChecker: {fileID: 0}
   TileMask:
