@@ -45,7 +45,7 @@ namespace splash_guardians
                         MaxScore = group.Max(item => item.Score)
                     })
                     .OrderBy(item => item.Name)
-                    .Select(item => $"Max {item.Name}: {item.MaxScore}")
+                    .Select(item => $"{item.Name} Game: {item.MaxScore}")
                     .ToArray();
 
                 outputText.text = levelLines.Length > 0
