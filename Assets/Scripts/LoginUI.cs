@@ -76,7 +76,27 @@ public class LoginUI : MonoBehaviour
         }
         catch (Exception e)
         {
-            StatusText.text = $"Error: {e.Message}";
+            var userMessage = e.Message;
+
+            try
+            {
+                using var json = System.Text.Json.JsonDocument.Parse(e.Message);
+                var root = json.RootElement;
+
+                if (root.TryGetProperty("msg", out var msg))
+                    userMessage = msg.GetString() ?? userMessage;
+                else if (root.TryGetProperty("message", out var message))
+                    userMessage = message.GetString() ?? userMessage;
+                else if (root.TryGetProperty("error_description", out var errorDescription))
+                    userMessage = errorDescription.GetString() ?? userMessage;
+                else if (root.TryGetProperty("error", out var error))
+                    userMessage = error.GetString() ?? userMessage;
+            }
+            catch
+            {
+            }
+
+            StatusText.text = $"Error: {userMessage}";
         }
     }
 }
