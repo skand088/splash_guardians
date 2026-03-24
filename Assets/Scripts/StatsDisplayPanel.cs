@@ -17,8 +17,11 @@ namespace splash_guardians
         [SerializeField] private Image panelBackground;
         
         [SerializeField] private string emptyStatsText = "No stats yet";
+        [SerializeField] private string loadingStatsText = "Loading stats...";
         [SerializeField] private float refreshInterval = 5f; // Refresh every 5 seconds
         [SerializeField] private bool autoRefresh = false; // Set to false when using button toggle
+        [SerializeField] private int maxRefreshAttempts = 8;
+        [SerializeField] private float refreshRetryDelaySeconds = 0.25f;
 
         private float timeSinceLastRefresh = 0f;
         private Canvas parentCanvas;
@@ -63,7 +66,44 @@ namespace splash_guardians
         /// </summary>
         public async Task RefreshStatsAsync()
         {
-            await LevelScoresDisplayHelper.RefreshAsync(statsText, progressService, emptyStatsText);
+            if (statsText == null)
+            {
+                return;
+            }
+
+            statsText.text = loadingStatsText;
+
+            for (var attempt = 0; attempt < maxRefreshAttempts; attempt++)
+            {
+                if (progressService == null)
+                {
+                    progressService = FindAnyObjectByType<ProgressService>();
+                }
+
+                if (progressService == null || !progressService.HasSignedInUser())
+                {
+                    if (attempt < maxRefreshAttempts - 1)
+                    {
+                        await Task.Delay((int)(refreshRetryDelaySeconds * 1000f));
+                        continue;
+                    }
+
+                    statsText.text = emptyStatsText;
+                    return;
+                }
+
+                await LevelScoresDisplayHelper.RefreshAsync(statsText, progressService, emptyStatsText);
+
+                if (!string.Equals(statsText.text, emptyStatsText))
+                {
+                    return;
+                }
+
+                if (attempt < maxRefreshAttempts - 1)
+                {
+                    await Task.Delay((int)(refreshRetryDelaySeconds * 1000f));
+                }
+            }
         }
 
         /// <summary>

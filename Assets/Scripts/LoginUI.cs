@@ -35,7 +35,7 @@ public class LoginUI : MonoBehaviour
             );
             StatusText.text = $"Welcome, {session.User?.Email}!";
             await Task.Delay(1000);
-            SceneManager.LoadScene("QuizScene");
+            SceneManager.LoadScene("MainMap");
         }
         catch (Exception e)
         {
