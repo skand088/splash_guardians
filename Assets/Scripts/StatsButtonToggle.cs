@@ -31,6 +31,10 @@ namespace splash_guardians
             if (statsDisplayPanel == null && statsPanelRoot != null)
             {
                 statsDisplayPanel = statsPanelRoot.GetComponent<StatsDisplayPanel>();
+                if (statsDisplayPanel == null)
+                {
+                    statsDisplayPanel = statsPanelRoot.GetComponentInChildren<StatsDisplayPanel>(true);
+                }
             }
         }
 

@@ -12,8 +12,21 @@ namespace splash_guardians
     {
         public SupabaseManager SupabaseManager;
 
+        private void Awake()
+        {
+            if (SupabaseManager == null)
+            {
+                SupabaseManager = FindAnyObjectByType<SupabaseManager>();
+            }
+        }
+
         private Supabase.Client GetClientOrThrow()
         {
+            if (SupabaseManager == null)
+            {
+                SupabaseManager = FindAnyObjectByType<SupabaseManager>();
+            }
+
             var client = SupabaseManager != null ? SupabaseManager.Supabase() : null;
             if (client == null)
             {
@@ -21,6 +34,26 @@ namespace splash_guardians
             }
 
             return client;
+        }
+
+        public bool IsClientReady()
+        {
+            if (SupabaseManager == null)
+            {
+                SupabaseManager = FindAnyObjectByType<SupabaseManager>();
+            }
+
+            return SupabaseManager != null && SupabaseManager.Supabase() != null;
+        }
+
+        public bool HasSignedInUser()
+        {
+            if (!IsClientReady())
+            {
+                return false;
+            }
+
+            return SupabaseManager.Supabase().Auth.CurrentUser != null;
         }
 
         public async Task SaveLevelCompletedAsync(string levelKey)
