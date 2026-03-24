@@ -7,13 +7,14 @@ public class TrashGameManager : MonoBehaviour
     public static TrashGameManager gameInstance;
 
     //define the game state as one of three options
-    public enum GameState { Start, Playing, GameOver }
+    public enum GameState { Start, Info, Playing, GameOver }
     public GameState gameCurrentState = GameState.Start;
 
 
     public GameObject gameStartScreen;
     public GameObject gameOverScreen;
     public GameObject gamePlayScreen; //main game play sceen
+    public GameObject gameInfoScreen;
 
     void Awake()
     {
@@ -33,6 +34,14 @@ public class TrashGameManager : MonoBehaviour
         gameStartScreen.SetActive(true);
         gameOverScreen.SetActive(false);
         gamePlayScreen.SetActive(false);
+        gameInfoScreen.SetActive(false);
+    }
+
+    public void ShowInfoScreen()
+    {
+        gameCurrentState = GameState.Info;
+        gameStartScreen.SetActive(false);
+        gameInfoScreen.SetActive(true);
     }
 
     public void StartGame()
@@ -42,6 +51,7 @@ public class TrashGameManager : MonoBehaviour
         gameStartScreen.SetActive(false);
         gameOverScreen.SetActive(false);
         gamePlayScreen.SetActive(true);
+        gameInfoScreen.SetActive(false);
     }
 
     public void EndGame()

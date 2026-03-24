@@ -1472,7 +1472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 20, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &625523333
@@ -2517,8 +2517,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360226451
 MonoBehaviour:
@@ -2540,11 +2540,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- 13,000 pieces of plastic litter found per km\xB2 of ocean (UN)\r\n-
-    ~40% of the ocean is heavily affected by pollution (UN)\r\n- UN Goal #14 aims
-    to prevent and reduce marine pollution\r\n- By 2050, plastic in the ocean may
-    outweigh fish (MarineBio)\r\n- ~80% of marine pollution comes from land-based
-    sources (MarineBio)"
+  m_text: '- According to the UN, algal blooms are often caused by excess nutrients
+    like nitrogen and phosphorus from human activities
+
+    - Over 400 dead zones
+    exist caused by algae decomposing and nutrient runoff, where marine life cannot
+    survive (UN)
+
+    - Some algal blooms produce toxins that can poison fish, shellfish,
+    and even humans (WHO)
+
+    - Pollution from rivers eventually flows into oceans,
+    spreading algal bloom problems to coastal ecosystems (UN)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -37544,7 +37551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: -20, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2036677008
@@ -37730,8 +37737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127650777
 MonoBehaviour:
@@ -37753,14 +37760,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- Reduce single use plastics
+  m_text: '- Clean up algal blooms
 
-    - Improve waste management systems
+    - Use sustainable farming practices to limit
+    nitrogen and phosphorus
 
-    -
-    Increase recycling
+    - Protect and restore wetlands
 
-    - Organize coastal and ocean cleanups'
+    - Improve
+    wastewater treatment
+
+    - Reduce nutrient pollution from cities'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -15,7 +15,7 @@ public class TrashStartScreenUI : MonoBehaviour
     {
         if (playButton != null)
         {
-            playButton.onClick.AddListener(() => TrashGameManager.gameInstance.StartGame());
+            playButton.onClick.AddListener(() => TrashGameManager.gameInstance.ShowInfoScreen());
         }
 
         _ = RefreshScoreTextAsync();
