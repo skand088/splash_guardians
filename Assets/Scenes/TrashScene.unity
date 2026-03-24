@@ -36189,7 +36189,7 @@ MonoBehaviour:
   TileMask:
     serializedVersion: 2
     m_Bits: 0
-  ScoreText: {fileID: 0}
+  ScoreText: {fileID: 1828533034}
   Sprite: {fileID: 0}
   HeldItem: {fileID: 0}
   PosHeldItemOffset: {x: 0, y: 0}
@@ -36413,7 +36413,7 @@ GameObject:
   - component: {fileID: 1828533035}
   - component: {fileID: 1828533034}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: TrashScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36435,8 +36435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 124.0358, y: 46.2018}
+  m_AnchoredPosition: {x: -20, y: 20}
+  m_SizeDelta: {x: 125, y: 46.2018}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1828533034
 MonoBehaviour:
@@ -36467,8 +36467,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
