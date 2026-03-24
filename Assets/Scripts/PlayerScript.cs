@@ -73,7 +73,7 @@ namespace splash_guardians
             }
 
             // Trash collection
-            if (other.CompareTag("Trash") && HeldItem.IsTouching(other))
+            else if (other.CompareTag("Trash") && HeldItem.IsTouching(other))
             {
                 TrashScore++;
                 Destroy(other.gameObject);

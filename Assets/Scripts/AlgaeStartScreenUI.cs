@@ -12,14 +12,13 @@ public class AlgaeStartScreenUI : MonoBehaviour
     public string EmptyScoresText = "No scores yet.";
 
     private void Start()
+{
+    if (playButton != null)
     {
-        if (playButton != null)
-        {
-            playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.StartGame());
-        }
-
-        _ = RefreshScoreTextAsync();
+        playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.ShowInfoScreen()); // changed
     }
+    _ = RefreshScoreTextAsync();
+}
 
     private void OnEnable()
     {
