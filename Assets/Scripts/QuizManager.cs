@@ -19,7 +19,7 @@ public class QuizManager : MonoBehaviour
     public GameObject TimerUI;
 
     public Image timerFill;
-    public float timePerQuestion = 45f;
+    public float timePerQuestion = 30f;
 
     private float currentTime;
     private bool timerRunning = false;
