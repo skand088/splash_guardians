@@ -1747,6 +1747,77 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1230415126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230415130}
+  - component: {fileID: 1230415129}
+  - component: {fileID: 1230415128}
+  - component: {fileID: 1230415127}
+  m_Layer: 0
+  m_Name: Services
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1230415127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230415126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0337c3d259fbc43842d179a07d2ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::splash_guardians.ServiceBootstrap
+--- !u!114 &1230415128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230415126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb683a28fe7c48c44ad5264658b53f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::splash_guardians.ProgressService
+  SupabaseManager: {fileID: 1230415129}
+--- !u!114 &1230415129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230415126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c508f628e30dc49b6dfe3766cb0d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::com.example.SupabaseManager
+--- !u!4 &1230415130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230415126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243347183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2321,8 @@ MonoBehaviour:
   timePerQuestion: 45
   QuestionText: {fileID: 2073488529}
   ScoreText: {fileID: 328794843}
+  ProgressService: {fileID: 0}
+  LevelKey: quiz
   score: 0
 --- !u!4 &1494307471
 Transform:
@@ -3462,3 +3535,4 @@ SceneRoots:
   - {fileID: 1275958633}
   - {fileID: 925243144}
   - {fileID: 1494307471}
+  - {fileID: 1230415130}

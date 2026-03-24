@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using splash_guardians;
 
 public class QuizManager : MonoBehaviour
 {
@@ -25,6 +27,11 @@ public class QuizManager : MonoBehaviour
     public Text QuestionText;
     public Text ScoreText;
 
+    public ProgressService ProgressService;
+    public string LevelKey = "quiz";
+
+    private bool _hasEnded = false;
+
     int TotalQuestions;
     public int score;
     int questionsAsked = 0;
@@ -38,6 +45,11 @@ public class QuizManager : MonoBehaviour
         QuizPanel.SetActive(false);
         GameOverPanel.SetActive(false);
         TimerUI.SetActive(false);
+
+        if (ProgressService == null)
+        {
+            ProgressService = FindAnyObjectByType<ProgressService>();
+        }
     }
 
     public void ShowInfo()
@@ -64,14 +76,26 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void GameOver()
+    public async void GameOver()
     {
+        if (_hasEnded) return;
+        _hasEnded = true;
+
         timerRunning = false;
         TimerUI.SetActive(false);
 
         QuizPanel.SetActive(false);
         GameOverPanel.SetActive(true);
         ScoreText.text = "Score: " + score + "/" + TotalQuestions;
+
+        if (ProgressService != null)
+        {
+            await SaveProgressSafely();
+        }
+        else
+        {
+            Debug.LogWarning("ProgressService not found. Quiz score was not saved.");
+        }
     }
 
     public void correct()
@@ -139,6 +163,19 @@ public class QuizManager : MonoBehaviour
                 timerRunning = false;
                 wrong();
             }
+        }
+    }
+
+    private async Task SaveProgressSafely()
+    {
+        try
+        {
+            await ProgressService.SaveLevelResultAsync(LevelKey, score);
+            Debug.Log($"Saved progress for level '{LevelKey}' with score {score}.");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to save progress for level '{LevelKey}': {e.Message}");
         }
     }
 }
