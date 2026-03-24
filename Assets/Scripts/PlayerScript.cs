@@ -47,25 +47,43 @@ namespace splash_guardians
             Sprite = GetComponent<SpriteRenderer>();
             HeldItem = GetComponent<CircleCollider2D>();
             DiverColliders = GetComponents<BoxCollider2D>();
+            ScoreText = GetComponent<TMP_Text>();
 
-            PosHeldItemOffset = HeldItem.offset;
-            NegHeldItemOffset = HeldItem.offset;
-            NegHeldItemOffset.x = -NegHeldItemOffset.x;
+            if (HeldItem != null)
+            {
+                PosHeldItemOffset = HeldItem.offset;
+                NegHeldItemOffset = HeldItem.offset;
+                NegHeldItemOffset.x = -NegHeldItemOffset.x;
+            }
 
             Direction.x = 0;
             Direction.y = 0;
         }
 
         //adding a function to detect collosion with the algae object and each collision causes score to increase and for the object to disappear
-        private void OnTriggerEnter2D(Collider2D algae_object)
+        private void OnTriggerEnter2D(Collider2D other)
         {
+            // Prevent some errors while in main map.
+            if (HeldItem == null)
+            {
+                return;
+            }
             //check if it an algae object
-            if (algae_object.CompareTag("Algae") && HeldItem.IsTouching(algae_object))
+            if (other.CompareTag("Algae") && HeldItem.IsTouching(other))
             {
                 AlgaeScore++; // increase algae score
-                Destroy(algae_object.gameObject);
+                Destroy(other.gameObject);
                 Debug.Log("Algae Score: " + AlgaeScore);
-                if (ScoreText != null) ScoreText.text = "Algae Score: " + AlgaeScore;
+                if (ScoreText != null) ScoreText.text = "Score: " + AlgaeScore;
+            }
+
+            //check if trash object
+            if (other.CompareTag("Trash") && HeldItem.IsTouching(other))
+            {
+                TrashScore++;
+                Destroy(other.gameObject);
+                Debug.Log("Trash Score: " + TrashScore);
+                if (ScoreText != null) ScoreText.text = "Score: " + TrashScore;
             }
         }
 
@@ -86,12 +104,12 @@ namespace splash_guardians
             if (Direction.x < 0f)
             {
                 Sprite.flipX = true;
-                HeldItem.offset = NegHeldItemOffset;
+                if (HeldItem != null) HeldItem.offset = NegHeldItemOffset;
             }
             else if (Direction.x > 0f)
             {
                 Sprite.flipX = false;
-                HeldItem.offset = PosHeldItemOffset;
+                if (HeldItem != null) HeldItem.offset = PosHeldItemOffset;
             }
         }
 

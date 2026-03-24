@@ -9,6 +9,7 @@ TagManager:
   - TrashGame
   - QuizGame
   - GamePortalContainer
+  - Trash
   layers:
   - Default
   - TransparentFX

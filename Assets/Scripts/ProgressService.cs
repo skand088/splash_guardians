@@ -95,5 +95,27 @@ namespace splash_guardians
                 .Select(item => item.LevelKey)
                 .ToHashSet();
         }
+
+        public async Task<List<ProgressRecord>> GetMyStoredScoresAsync()
+        {
+            var client = GetClientOrThrow();
+            var user = client.Auth.CurrentUser;
+
+            if (user == null)
+            {
+                throw new InvalidOperationException("No signed-in user found.");
+            }
+
+            var result = await client
+                .From<ProgressRecord>()
+                .Filter("user_id", Constants.Operator.Equals, user.Id)
+                .Get();
+
+            return result.Models
+                .Where(item => !string.IsNullOrWhiteSpace(item.LevelKey))
+                .OrderByDescending(item => item.Score)
+                .ThenByDescending(item => item.CompletedAt)
+                .ToList();
+        }
     }
 }
