@@ -32,11 +32,11 @@ public class AlgaeStartScreenUI : MonoBehaviour
             closeHowToPlayButton.onClick.AddListener(CloseHowToPlay);
         }
 
+
         if (howToPlayPanel != null)
         {
             howToPlayPanel.SetActive(false);
         }
-
         _ = RefreshScoreTextAsync();
     }
 
@@ -46,19 +46,24 @@ public class AlgaeStartScreenUI : MonoBehaviour
         {
             howToPlayPanel.SetActive(false);
         }
+
         _ = RefreshScoreTextAsync();
     }
 
     public void OpenHowToPlay()
     {
         if (howToPlayPanel != null)
+        {
             howToPlayPanel.SetActive(true);
+        }
     }
 
     public void CloseHowToPlay()
     {
         if (howToPlayPanel != null)
+        {
             howToPlayPanel.SetActive(false);
+        }
     }
 
     private async Task RefreshScoreTextAsync()

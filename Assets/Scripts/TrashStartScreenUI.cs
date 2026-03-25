@@ -19,7 +19,7 @@ public class TrashStartScreenUI : MonoBehaviour
     {
         if (playButton != null)
         {
-            playButton.onClick.AddListener(() => TrashGameManager.gameInstance.StartGame());
+            playButton.onClick.AddListener(() => TrashGameManager.gameInstance.ShowInfoScreen());
         }
 
         if (howToPlayButton != null)
@@ -31,6 +31,7 @@ public class TrashStartScreenUI : MonoBehaviour
         {
             closeHowToPlayButton.onClick.AddListener(CloseHowToPlay);
         }
+
 
         if (howToPlayPanel != null)
         {
@@ -46,20 +47,23 @@ public class TrashStartScreenUI : MonoBehaviour
         {
             howToPlayPanel.SetActive(false);
         }
-        
         _ = RefreshScoreTextAsync();
     }
 
     public void OpenHowToPlay()
     {
         if (howToPlayPanel != null)
+        {
             howToPlayPanel.SetActive(true);
+        }
     }
 
     public void CloseHowToPlay()
     {
         if (howToPlayPanel != null)
+        {
             howToPlayPanel.SetActive(false);
+        }
     }
 
     private async Task RefreshScoreTextAsync()
