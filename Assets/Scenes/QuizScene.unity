@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -291,9 +291,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
     m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_SelectedColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -660,7 +660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -17.660034, y: -14.320129}
+  m_AnchoredPosition: {x: -17.660034, y: -14.320068}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243347185
@@ -839,8 +839,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.5}
-  m_SizeDelta: {x: 456, y: 7}
+  m_AnchoredPosition: {x: 0, y: -3.6455}
+  m_SizeDelta: {x: 456, y: 7.291}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403143374
 MonoBehaviour:
@@ -1090,35 +1090,40 @@ MonoBehaviour:
     Answers:
     - A. Add oxygen
     - B. Provide nutrients
-    - 
-    - 
+    - C. Enter the food chain
+    - D. Float harmlessly on the surface
     CorrectAnswer: 3
-  - Question: Which human activity contributes most to marine pollution?
+  - Question: What is one effect of climate change on oceans?
     Answers:
-    - A. Space exploration
-    - B. Agricultural runoff and industrial waste
-    - C. Natural ocean currents
-    - D. Deep-sea volcanic activity
+    - A. Lower sea levels
+    - B. Warmer water
+    - C. Fewer waves
+    - D. More oxygen
     CorrectAnswer: 2
-  - Question: Which human activity contributes most to marine pollution?
+  - Question: Why are marine protected areas created?
     Answers:
-    - A. Space exploration
-    - B. Agricultural runoff and industrial waste
-    - C. Natural ocean currents
-    - D. Deep-sea volcanic activity
-    CorrectAnswer: 2
+    - A. More fishing
+    - B. Free access
+    - C. Protect ecosystems
+    - D. Build cities
+    CorrectAnswer: 3
+  currentQuestion: 0
   options:
   - {fileID: 1880320251}
   - {fileID: 2080108004}
   - {fileID: 1848814669}
   - {fileID: 741174255}
-  currentQuestion: 0
+  optionTexts:
+  - {fileID: 1680138042}
+  - {fileID: 681202905}
+  - {fileID: 2068640779}
+  - {fileID: 956490363}
   QuizPanel: {fileID: 1243347183}
   TimerUI: {fileID: 1792608003}
   timerFill: {fileID: 1403143374}
-  timePerQuestion: 45
   QuestionText: {fileID: 2073488529}
   ScoreText: {fileID: 0}
+  timePerQuestion: 45
   ProgressService: {fileID: 0}
   LevelKey: quiz
   score: 0
@@ -1512,7 +1517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1522,9 +1527,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
     m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_SelectedColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1676,7 +1681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1686,9 +1691,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
     m_HighlightedColor: {r: 0.6981132, g: 0.55651474, b: 0.687221, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_SelectedColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2090,7 +2095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2100,9 +2105,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
     m_HighlightedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.69803923, g: 0.5568628, b: 0.6862745, a: 1}
     m_SelectedColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.21960784, g: 0.3019608, b: 0.5294118, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

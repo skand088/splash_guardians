@@ -4,37 +4,69 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using splash_guardians;
+using UnityEngine.EventSystems;
 
 public class QuizManager : MonoBehaviour
 {
-    public List<QuestionAndAnswers> QnA;
-    public GameObject[] options;
+    [Header("Quiz Data")]
+    public List<QuestionAndAnswers> QnA = new List<QuestionAndAnswers>();
     public int currentQuestion;
 
+    [Header("Answer Buttons")]
+    public GameObject[] options;
+    public Text[] optionTexts;
+
+    [Header("UI")]
     public GameObject QuizPanel;
     public GameObject TimerUI;
-
     public Image timerFill;
-    public float timePerQuestion = 30f;
-
-    private float currentTime;
-    private bool timerRunning = false;
-
     public Text QuestionText;
     public Text ScoreText;
 
+    [Header("Timer")]
+    public float timePerQuestion = 30f;
+    private float currentTime;
+    private bool timerRunning = false;
+
+    [Header("Progress")]
     public ProgressService ProgressService;
     public string LevelKey = "quiz";
 
     private bool _hasEnded = false;
-
-    int TotalQuestions;
+    private int TotalQuestions;
     public int score;
-    int questionsAsked = 0;
+    private int questionsAsked = 0;
 
     private void Start()
     {
+        if (QnA == null || QnA.Count == 0)
+        {
+            Debug.LogError("QuizManager: QnA list is empty. Add questions in the Inspector.");
+            return;
+        }
+
+        if (options == null || options.Length == 0)
+        {
+            Debug.LogError("QuizManager: options array is empty.");
+            return;
+        }
+
+        if (optionTexts == null || optionTexts.Length != options.Length)
+        {
+            Debug.LogError("QuizManager: optionTexts must be assigned and match options length.");
+            return;
+        }
+
+        if (QuestionText == null)
+        {
+            Debug.LogError("QuizManager: QuestionText is not assigned.");
+            return;
+        }
+
         TotalQuestions = Mathf.Min(5, QnA.Count);
+        score = 0;
+        questionsAsked = 0;
+        _hasEnded = false;
 
         if (QuizPanel != null)
             QuizPanel.SetActive(true);
@@ -47,12 +79,12 @@ public class QuizManager : MonoBehaviour
             ProgressService = FindAnyObjectByType<ProgressService>();
         }
 
-        generateQuestion();
+        GenerateQuestion();
     }
 
     public void retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public async void GameOver()
@@ -85,42 +117,118 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
+        if (_hasEnded) return;
+
         timerRunning = false;
         score += 1;
         questionsAsked += 1;
-        QnA.RemoveAt(currentQuestion);
-        generateQuestion();
+
+        RemoveCurrentQuestionSafely();
+        GenerateQuestion();
     }
 
     public void wrong()
     {
+        if (_hasEnded) return;
+
         timerRunning = false;
         questionsAsked += 1;
-        QnA.RemoveAt(currentQuestion);
-        generateQuestion();
+
+        RemoveCurrentQuestionSafely();
+        GenerateQuestion();
     }
 
-    void SetAnswers()
+    private void RemoveCurrentQuestionSafely()
     {
-        for (int i = 0; i < options.Length; i++)
+        if (QnA != null && currentQuestion >= 0 && currentQuestion < QnA.Count)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[i];
-
-            if (QnA[currentQuestion].CorrectAnswer == i + 1)
-            {
-                options[i].GetComponent<AnswerScript>().isCorrect = true;
-            }
+            QnA.RemoveAt(currentQuestion);
+        }
+        else
+        {
+            Debug.LogWarning("QuizManager: Tried to remove invalid question index.");
         }
     }
 
-    void generateQuestion()
+    private void SetAnswers()
     {
-        if (questionsAsked < TotalQuestions && QnA.Count > 0)
+        if (QnA == null || QnA.Count == 0)
+        {
+            Debug.LogError("QuizManager: No questions available in SetAnswers.");
+            return;
+        }
+
+        QuestionAndAnswers selectedQuestion = QnA[currentQuestion];
+
+        if (selectedQuestion.Answers == null)
+        {
+            Debug.LogError("QuizManager: Selected question has null Answers array.");
+            return;
+        }
+
+        for (int i = 0; i < options.Length; i++)
+        {
+            AnswerScript answerScript = options[i] != null ? options[i].GetComponent<AnswerScript>() : null;
+
+            if (answerScript == null)
+            {
+                Debug.LogError($"QuizManager: AnswerScript missing on option index {i}.");
+                continue;
+            }
+
+            answerScript.isCorrect = false;
+
+            if (optionTexts[i] == null)
+            {
+                Debug.LogError($"QuizManager: optionTexts[{i}] is not assigned.");
+                continue;
+            }
+
+            if (i < selectedQuestion.Answers.Length)
+            {
+                optionTexts[i].text = selectedQuestion.Answers[i];
+            }
+            else
+            {
+                optionTexts[i].text = "";
+                Debug.LogError($"QuizManager: Missing answer data at index {i} for question: {selectedQuestion.Question}");
+            }
+
+            if (selectedQuestion.CorrectAnswer == i + 1)
+            {
+                answerScript.isCorrect = true;
+            }
+        }
+
+        Canvas.ForceUpdateCanvases();
+    }
+
+    private void GenerateQuestion()
+    {
+        if (_hasEnded) return;
+
+        if (questionsAsked < TotalQuestions && QnA != null && QnA.Count > 0)
         {
             currentQuestion = Random.Range(0, QnA.Count);
-            QuestionText.text = QnA[currentQuestion].Question;
+
+            QuestionAndAnswers selectedQuestion = QnA[currentQuestion];
+
+            if (selectedQuestion == null)
+            {
+                Debug.LogError("QuizManager: Selected question is null.");
+                GameOver();
+                return;
+            }
+
+            QuestionText.text = selectedQuestion.Question;
+
+            if (EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
+
             SetAnswers();
+            Canvas.ForceUpdateCanvases();
 
             if (TimerUI != null)
                 TimerUI.SetActive(true);
@@ -140,23 +248,24 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        if (timerRunning)
+        if (!timerRunning || _hasEnded) return;
+
+        currentTime -= Time.deltaTime;
+
+        if (timerFill != null)
         {
-            currentTime -= Time.deltaTime;
+            timerFill.fillAmount = Mathf.Clamp01(currentTime / timePerQuestion);
+        }
+
+        if (currentTime <= 0f)
+        {
+            currentTime = 0f;
 
             if (timerFill != null)
-                timerFill.fillAmount = currentTime / timePerQuestion;
+                timerFill.fillAmount = 0f;
 
-            if (currentTime <= 0f)
-            {
-                currentTime = 0f;
-
-                if (timerFill != null)
-                    timerFill.fillAmount = 0f;
-
-                timerRunning = false;
-                wrong();
-            }
+            timerRunning = false;
+            wrong();
         }
     }
 
