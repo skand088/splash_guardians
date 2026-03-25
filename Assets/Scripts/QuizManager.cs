@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -12,10 +11,7 @@ public class QuizManager : MonoBehaviour
     public GameObject[] options;
     public int currentQuestion;
 
-    public GameObject StartPanel;
-    public GameObject InfoPanel;
     public GameObject QuizPanel;
-    public GameObject GameOverPanel;
     public GameObject TimerUI;
 
     public Image timerFill;
@@ -40,34 +36,17 @@ public class QuizManager : MonoBehaviour
     {
         TotalQuestions = Mathf.Min(5, QnA.Count);
 
-        StartPanel.SetActive(true);
-        InfoPanel.SetActive(false);
-        QuizPanel.SetActive(false);
-        GameOverPanel.SetActive(false);
-        TimerUI.SetActive(false);
+        if (QuizPanel != null)
+            QuizPanel.SetActive(true);
+
+        if (TimerUI != null)
+            TimerUI.SetActive(true);
 
         if (ProgressService == null)
         {
             ProgressService = FindAnyObjectByType<ProgressService>();
         }
-    }
 
-    public void ShowInfo()
-    {
-        InfoPanel.SetActive(true);
-    }
-
-    public void HideInfo()
-    {
-        InfoPanel.SetActive(false);
-    }
-
-    public void StartGame()
-    {
-        StartPanel.SetActive(false);
-        InfoPanel.SetActive(false);
-        QuizPanel.SetActive(true);
-        TimerUI.SetActive(true);
         generateQuestion();
     }
 
@@ -82,11 +61,15 @@ public class QuizManager : MonoBehaviour
         _hasEnded = true;
 
         timerRunning = false;
-        TimerUI.SetActive(false);
 
-        QuizPanel.SetActive(false);
-        GameOverPanel.SetActive(true);
-        ScoreText.text = "Score: " + score + "/" + TotalQuestions;
+        if (TimerUI != null)
+            TimerUI.SetActive(false);
+
+        if (QuizPanel != null)
+            QuizPanel.SetActive(false);
+
+        QuizSessionData.FinalScore = score;
+        QuizSessionData.TotalQuestions = TotalQuestions;
 
         if (ProgressService != null)
         {
@@ -96,6 +79,8 @@ public class QuizManager : MonoBehaviour
         {
             Debug.LogWarning("ProgressService not found. Quiz score was not saved.");
         }
+
+        SceneManager.LoadScene("QuizEndScene");
     }
 
     public void correct()
@@ -137,10 +122,14 @@ public class QuizManager : MonoBehaviour
             QuestionText.text = QnA[currentQuestion].Question;
             SetAnswers();
 
-            TimerUI.SetActive(true);
+            if (TimerUI != null)
+                TimerUI.SetActive(true);
+
             currentTime = timePerQuestion;
             timerRunning = true;
-            timerFill.fillAmount = 1f;
+
+            if (timerFill != null)
+                timerFill.fillAmount = 1f;
         }
         else
         {
@@ -154,12 +143,17 @@ public class QuizManager : MonoBehaviour
         if (timerRunning)
         {
             currentTime -= Time.deltaTime;
-            timerFill.fillAmount = currentTime / timePerQuestion;
+
+            if (timerFill != null)
+                timerFill.fillAmount = currentTime / timePerQuestion;
 
             if (currentTime <= 0f)
             {
                 currentTime = 0f;
-                timerFill.fillAmount = 0f;
+
+                if (timerFill != null)
+                    timerFill.fillAmount = 0f;
+
                 timerRunning = false;
                 wrong();
             }
