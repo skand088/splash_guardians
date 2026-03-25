@@ -11,18 +11,59 @@ public class AlgaeStartScreenUI : MonoBehaviour
     public ProgressService ProgressService;
     public string EmptyScoresText = "No scores yet.";
 
+    public Button howToPlayButton;
+    public GameObject howToPlayPanel;
+    public Button closeHowToPlayButton;
+
     private void Start()
-{
-    if (playButton != null)
     {
-        playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.ShowInfoScreen()); // changed
+        if (playButton != null)
+        {
+            playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.StartGame());
+        }
+
+        if (howToPlayButton != null)
+        {
+            howToPlayButton.onClick.AddListener(OpenHowToPlay);
+        }
+
+        if (closeHowToPlayButton != null)
+        {
+            closeHowToPlayButton.onClick.AddListener(CloseHowToPlay);
+        }
+
+
+        if (howToPlayPanel != null)
+        {
+            howToPlayPanel.SetActive(false);
+        }
+        _ = RefreshScoreTextAsync();
     }
-    _ = RefreshScoreTextAsync();
-}
 
     private void OnEnable()
     {
+        if (howToPlayPanel != null)
+        {
+            howToPlayPanel.SetActive(false);
+        }
+
         _ = RefreshScoreTextAsync();
+    }
+
+    public void OpenHowToPlay()
+    {
+        if (howToPlayPanel != null)
+        {
+            howToPlayPanel.SetActive(true);
+        }
+    }
+
+    public void CloseHowToPlay()
+    {
+        if (howToPlayPanel != null)
+        {
+            howToPlayPanel.SetActive(false);
+        }
     }
 
     private async Task RefreshScoreTextAsync()
