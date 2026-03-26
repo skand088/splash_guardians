@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using splash_guardians;
 
 public class QuizManager : MonoBehaviour
 {
@@ -19,10 +21,19 @@ public class QuizManager : MonoBehaviour
     int TotalQuestions;
     public int score;
 
+    public ProgressService ProgressService;
+    public string LevelKey = "quizgame";
+    private bool _hasEnded;
+
     private void Start()
     {
         TotalQuestions = QnA.Count;
         GameOverPanel.SetActive(false);
+        _hasEnded = false;
+        if (ProgressService == null)
+        {
+            ProgressService = FindAnyObjectByType<ProgressService>();
+        }
         generateQuestion();
     }
 
@@ -33,9 +44,31 @@ public class QuizManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (_hasEnded) return;
+        _hasEnded = true;
+        
         QuizPanel.SetActive(false);
         GameOverPanel.SetActive(true);
         ScoreText.text = "Score: " + score + "/" + TotalQuestions;
+        
+        if (ProgressService != null)
+        {
+            _ = SaveProgressSafely();
+        }
+    }
+
+    private async Task SaveProgressSafely()
+    {
+        try
+        {
+            await ProgressService.SaveLevelResultAsync(LevelKey, score);
+            Debug.Log($"Saved quiz progress with score {score}/{TotalQuestions}.");
+            await Task.Delay(500);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to save quiz progress: {e.Message}");
+        }
     }
 
     public void correct()
