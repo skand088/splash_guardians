@@ -19,20 +19,16 @@ public class AlgaeStartScreenUI : MonoBehaviour
     {
         if (playButton != null)
         {
-            playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.StartGame());
+            playButton.onClick.AddListener(() => AlgaeGameManager.gameInstance.ShowInfoScreen());
         }
-
         if (howToPlayButton != null)
         {
             howToPlayButton.onClick.AddListener(OpenHowToPlay);
         }
-
         if (closeHowToPlayButton != null)
         {
             closeHowToPlayButton.onClick.AddListener(CloseHowToPlay);
         }
-
-
         if (howToPlayPanel != null)
         {
             howToPlayPanel.SetActive(false);
