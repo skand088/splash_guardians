@@ -12,7 +12,7 @@ namespace splash_guardians
         {
             PortalNames.Add("AlgaeDoor", "AlgaeScene");
             PortalNames.Add("TrashDoor", "TrashScene");
-            PortalNames.Add("QuizDoor", "quizgame");
+            PortalNames.Add("QuizDoor", "QuizStartScene");
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
