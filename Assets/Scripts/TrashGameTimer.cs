@@ -26,6 +26,10 @@ public class TrashGameTimer : MonoBehaviour
         {
             ProgressService = FindAnyObjectByType<ProgressService>();
         }
+        if (PlayerScoreSource == null)
+        {
+            PlayerScoreSource = FindAnyObjectByType<PlayerScript>();
+        }
     }
 
     void Update()

@@ -25,6 +25,10 @@ public class AlgaeGameTimer : MonoBehaviour
         {
             ProgressService = FindAnyObjectByType<ProgressService>();
         }
+        if (PlayerScoreSource == null)
+        {
+            PlayerScoreSource = FindAnyObjectByType<splash_guardians.PlayerScript>();
+        }
     }
 
     void Update()
