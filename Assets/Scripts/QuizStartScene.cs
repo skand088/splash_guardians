@@ -1,40 +1,36 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class QuizStartScene : MonoBehaviour
 {
-    [SerializeField] private GameObject infoPanel;
-    [SerializeField] private GameObject titleText;
+    public Button playButton;
+    public Button mainMenuButton;
 
     private void Start()
     {
-        if (infoPanel != null)
-            infoPanel.SetActive(false);
+        // Play button → load quiz
+        if (playButton != null)
+        {
+            playButton.onClick.AddListener(StartQuiz);
+        }
 
-        if (titleText != null)
-            titleText.SetActive(true);
-    }
-
-    public void ShowInfo()
-    {
-        if (infoPanel != null)
-            infoPanel.SetActive(true);
-
-        if (titleText != null)
-            titleText.SetActive(false);
-    }
-
-    public void HideInfo()
-    {
-        if (infoPanel != null)
-            infoPanel.SetActive(false);
-
-        if (titleText != null)
-            titleText.SetActive(true);
+        // Main Menu button
+        if (mainMenuButton != null)
+        {
+            mainMenuButton.onClick.AddListener(GoToMainMenu);
+        }
     }
 
     public void StartQuiz()
     {
+        Debug.Log("Loading Quiz Scene...");
         SceneManager.LoadScene("QuizScene");
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMap");
     }
 }

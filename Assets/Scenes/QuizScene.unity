@@ -1001,6 +1001,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10995fd74d515449dab13e9705dec03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  currentState: 0
+  startScreen: {fileID: 0}
+  infoScreen: {fileID: 0}
+  gamePlayScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
   QnA:
   - Question: What is one major cause of plastic pollution in oceans?
     Answers:
