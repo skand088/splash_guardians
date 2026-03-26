@@ -31,7 +31,7 @@ public class QuizManager : MonoBehaviour
 
     [Header("Progress")]
     public ProgressService ProgressService;
-    public string LevelKey = "quiz";
+    public string LevelKey = "quizgame";
 
     private bool _hasEnded = false;
     private int TotalQuestions;
