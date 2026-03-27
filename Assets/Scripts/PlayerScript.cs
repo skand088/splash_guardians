@@ -80,6 +80,19 @@ namespace splash_guardians
                 Debug.Log("Trash Score: " + TrashScore);
                 if (ScoreText != null) ScoreText.text = "Score: " + TrashScore;
             }
+
+            //seashell collection
+            if (other.CompareTag("Seashell") && HeldItem.IsTouching(other))
+            {
+                //should not be possible to have a negative score
+                if (TrashScore != 0)
+                {
+                    TrashScore--;
+                }
+                Destroy(other.gameObject);
+                Debug.Log("Oops! Score: " + TrashScore);
+                if (ScoreText != null) ScoreText.text = "Score: " + TrashScore;
+            }
         }
 
         private void OnMove(InputValue input)
