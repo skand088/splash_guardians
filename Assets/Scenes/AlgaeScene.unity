@@ -1712,7 +1712,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: To play move the driver using arrow keys or AWSD keys to capture the algae
-    spawning around the screen to get the highest score in the time frame.
+    spawning around the screen to get the highest score in the time frame. Capture
+    more than 30 pieces of algae to win!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6fc3f3b5fe4e64439588e2ff770b3fc, type: 2}
   m_sharedMaterial: {fileID: -5753614886939804222, guid: e6fc3f3b5fe4e64439588e2ff770b3fc, type: 2}
