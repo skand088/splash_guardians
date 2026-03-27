@@ -10,6 +10,7 @@ TagManager:
   - QuizGame
   - GamePortalContainer
   - Trash
+  - Seashell
   layers:
   - Default
   - TransparentFX

@@ -1213,6 +1213,9 @@ MonoBehaviour:
   spawnInterval: 1
   mapWidth: 15
   mapHeight: 7
+  seashellTemplates:
+  - {fileID: 6850696977640607500, guid: 8ce4d65aaaff44243b1b084b001908d1, type: 3}
+  seashellSpawnInterval: 3
 --- !u!1 &268359939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,8 +2080,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: To play the game move the driver using the arrow keys or AWSD keys to collect
-    as much trash within the time limit. Collect more than 25 pieces of trash to
-    win!
+    as much trash within the time limit. Avoid the red seashells, you lose points
+    for those! Collect more than 20 pieces of trash to win!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6fc3f3b5fe4e64439588e2ff770b3fc, type: 2}
   m_sharedMaterial: {fileID: -5753614886939804222, guid: e6fc3f3b5fe4e64439588e2ff770b3fc, type: 2}
@@ -38427,7 +38430,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2014164500}
-  - component: {fileID: 2014164499}
   - component: {fileID: 2014164498}
   m_Layer: 0
   m_Name: TrashGameScreenManager
@@ -38453,23 +38455,6 @@ MonoBehaviour:
   gameOverScreen: {fileID: 28171947}
   gamePlayScreen: {fileID: 1797932347}
   gameInfoScreen: {fileID: 1860404911}
---- !u!114 &2014164499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014164497}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b38dac7e36e37348bc01c09a89cd38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AlgaeGameManager
-  gameCurrentState: 0
-  gameStartScreen: {fileID: 0}
-  gameOverScreen: {fileID: 0}
-  gamePlayScreen: {fileID: 0}
-  gameInfoScreen: {fileID: 0}
 --- !u!4 &2014164500
 Transform:
   m_ObjectHideFlags: 0

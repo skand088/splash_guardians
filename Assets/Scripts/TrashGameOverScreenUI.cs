@@ -33,9 +33,9 @@ public class TrashGameOverScreenUI : MonoBehaviour
             int finalScore = player.TrashScore;
 
             //base on users performance
-            if (finalScore < 12)
+            if (finalScore < 10)
                 scoreMessageText.text = "Uh oh, the ocean is still polluted! You only scored " + finalScore + ", you didn't catch enough trash!";
-            else if (finalScore <= 25)
+            else if (finalScore <= 20)
                 scoreMessageText.text = "You scored " + finalScore + "! Try catching more trash next time.";
             else
                 scoreMessageText.text = "You did it! You caught all the trash and scored " + finalScore + "!";
