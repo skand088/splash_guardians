@@ -39,11 +39,20 @@ public class TrashSpawner : MonoBehaviour
     }
 
     void SpawnSeashell()
-    {
-        if (seashellTemplates.Length == 0) return;
-        float x = Random.Range(-mapWidth, mapWidth);
-        float y = Random.Range(-mapHeight, mapHeight);
-        int randomIndex = Random.Range(0, seashellTemplates.Length);
-        Instantiate(seashellTemplates[randomIndex], new Vector2(x, y), Quaternion.identity);
-    }
+{
+    if (seashellTemplates.Length == 0) return;
+
+    float x = Random.Range(-mapWidth, mapWidth);
+    float y = Random.Range(-mapHeight, mapHeight);
+    int randomIndex = Random.Range(0, seashellTemplates.Length);
+
+    GameObject shell = Instantiate(
+        seashellTemplates[randomIndex],
+        new Vector2(x, y),
+        Quaternion.identity
+    );
+
+    // Make it smaller
+    shell.transform.localScale = new Vector3(0.5f, 0.5f, 1f); // adjust this value
+}
 }
