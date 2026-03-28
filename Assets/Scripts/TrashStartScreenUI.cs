@@ -46,7 +46,6 @@ public class TrashStartScreenUI : MonoBehaviour
         {
             howToPlayPanel.SetActive(false);
         }
-        _ = RefreshScoreTextAsync();
     }
 
     public void OpenHowToPlay()
